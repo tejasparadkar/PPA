@@ -1,0 +1,38 @@
+{% extends "BASE.html" %}
+{% block title %}Login page{% endblock %}
+
+{% block head %}
+  {{ super() }}
+{% endblock %}
+
+{% block bodyblock %}
+        <img src="static/images/36.jpg" id="img">
+        <h4>{{error}}</h4>
+        <div id = "otpBox">
+            <form action="/otp/otp" method="POST">
+
+                <!-- Username -->
+                <div class = "otpfield">
+                    <h4>Enter OTP here:</h4>
+                    <!-- <input type="text" name="otp" pattern="^[a-zA-Z0-9]+$" required pattern="\S+.*" /> -->
+                    <input type="text" name="otp"/>
+                </div>
+
+                <input type="hidden" name="userid" value="{{userid}}"/>
+                
+                <!-- Create AccountButton -->
+                <button class="btn btn-primary btn-lg button" type="submit">Login</button>
+            </form>
+
+            <form action="/otp/newOtp" method="POST">
+                <input type="hidden" name="userid" value="{{userid}}"/>
+
+                <!-- Generates new OTP -->
+                <button class="btn btn-primary btn-lg button" type="submit">Generate New OTP</button>
+            </form>
+        </div>
+
+    {% block script %}
+    {% endblock %}
+
+{% endblock %}
